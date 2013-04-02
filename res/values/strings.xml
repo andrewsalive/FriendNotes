@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FriendNotes</string>    
+    <string name="no_notes">No friends yet</string>    
+    <string name="username">Friend Name</string>    
+    <string name="menu_delete">Delete Item</string>
+    <string name="birthday">Birthday</string>
+    <string name="edit_user">Edit friends profile</string>
+    <string name="note">note</string>
+    <string name="confirm">Confirm</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

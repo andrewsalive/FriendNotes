@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+    <LinearLayout 
+        android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" >    
+
+    	<TextView
+    	    android:id="@+id/username"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="48dp"
+    	    android:layout_marginLeft="32dp"
+    	    android:layout_marginRight="16dp"
+    	    android:layout_weight="1"
+    	    android:gravity="center_vertical"
+    	    android:text="@string/username"
+    	    android:textSize="16dp" />
+
+    	<LinearLayout 
+    	    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" >    
+
+	    	<TextView
+	    	    android:id="@+id/userbirthday"
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="48dp"
+	    	    android:layout_gravity="center_vertical"
+	    	    android:layout_marginLeft="32dp"
+	    	    android:layout_marginRight="16dp"
+	    	    android:layout_weight="1"
+	    	    android:gravity="center_vertical"
+	    	    android:text="@string/birthday"
+	    	    android:textSize="16dp" />
+
+	    	<Button
+	    	    android:id="@+id/editUser"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_marginRight="8dp"
+	    	    android:text="Edit User" />
+  	
+		</LinearLayout>
+		<LinearLayout 
+    	    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" >    
+
+			<EditText
+			    android:id="@+id/newNote"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="8dp"
+			    android:layout_weight="1"
+			    android:paddingTop="4dp" />
+
+		  	<Button
+		  	    android:id="@+id/createNote"
+		  	    android:layout_width="wrap_content"
+		  	    android:layout_height="wrap_content"
+		  	    android:layout_marginRight="8dp"
+		  	    android:text="Add Note" />
+
+		</LinearLayout>
+<!--   		<Button
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="Read Data"
+	        android:id="@+id/readBase" /> -->
+	  	
+	  	
+  	</LinearLayout>
+  	<ListView android:id="@+id/android:list"
+         	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"/>
+</LinearLayout>
