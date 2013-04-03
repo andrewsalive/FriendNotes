@@ -3,12 +3,14 @@ package com.android.test.friendnotes;
 import com.android.test.friendnotes.R;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -50,13 +52,22 @@ public class FriendsList extends ListActivity {
         
         findViewById(R.id.notes_filter).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		        imm.hideSoftInputFromWindow(etNoteCount.getWindowToken(), 0);
 				getUsersList(count); 
 			}
 		});
         
         findViewById(R.id.birthday_filter).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		        imm.hideSoftInputFromWindow(etBirthDay.getWindowToken(), 0);
 				getUsersList(birthday); 
+			}
+		});
+        findViewById(R.id.show_all).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				getUsersList(all); 
 			}
 		});
         getUsersList(all);
@@ -72,12 +83,10 @@ public class FriendsList extends ListActivity {
     	else if(filter == "count"){
     		int mNotesConut = Integer.parseInt(etNoteCount.getText().toString());
     		argCursor = mDbHelper.fetchUsersWithCount(mNotesConut);
-    		usersCursor.requery();
     	}
     	else if(filter == "birthday"){
     		String mBirthDay = etBirthDay.getText().toString();
     		argCursor = mDbHelper.fetchUsersWithDate(mBirthDay);
-    		usersCursor.requery();
     	};
     	
     	usersCursor = argCursor;

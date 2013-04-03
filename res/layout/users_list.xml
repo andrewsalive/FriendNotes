@@ -41,6 +41,12 @@
 		  	    android:layout_height="wrap_content"
 		  	    android:layout_marginRight="8dp"
 		  	    android:text="notes count"/>
+		  	<Button
+		  	    android:id="@+id/show_all"
+		  	    android:layout_width="wrap_content"
+		  	    android:layout_height="wrap_content"
+		  	    android:layout_marginRight="8dp"
+		  	    android:text="show all"/>
 	</LinearLayout>
 	<LinearLayout 
     	    android:orientation="horizontal"
