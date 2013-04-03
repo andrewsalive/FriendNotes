@@ -18,12 +18,30 @@
   	    android:layout_weight="1"
   	    android:text="@string/no_notes"
   	    android:textSize="16dp" />
-
 <!--   	<Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Read Database"
-        android:id="@+id/readBase" /> -->
+        android:id="@+id/readBase" /> -->        
+    <LinearLayout 
+    	    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" >
+			<EditText
+			    android:id="@+id/notes_count"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="8dp"
+			    android:layout_weight="1"
+			    android:paddingTop="4dp"
+			    android:inputType="number"/>
+		  	<Button
+		  	    android:id="@+id/notes_filter"
+		  	    android:layout_width="wrap_content"
+		  	    android:layout_height="wrap_content"
+		  	    android:layout_marginRight="8dp"
+		  	    android:text="notes count"/>
+	</LinearLayout>    
   	<Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

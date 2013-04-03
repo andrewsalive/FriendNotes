@@ -10,7 +10,7 @@ import android.util.Log;
 
 
 public class NotesDbAdapter {
-		
+			
 	public static final String KEY_ROWID = "_id";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_BIRTHDAY = "birthday";
@@ -131,6 +131,17 @@ public class NotesDbAdapter {
             mCursor.moveToFirst();
         }
         return mCursor;
+    }
+    
+    public Cursor fetchUsersWithCount(int count) {
+    	Cursor countedUsers;
+        String sqlQuery = "select users._id, users.username "
+                + "from users "
+                + "inner join ( select note_id, note, count(note) as times from notes group by note_id, note_id having times= " + count
+                + " ) "
+                + "on note_id = _id " ;
+        countedUsers = mDb.rawQuery(sqlQuery, null);
+        return countedUsers;       
     }
 
     public void close() {

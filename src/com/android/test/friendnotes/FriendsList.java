@@ -12,15 +12,21 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 public class FriendsList extends ListActivity {
-	
+		
 	private NotesDbAdapter mDbHelper;
 	private Cursor usersCursor;    
 	
 	private static final int DELETE_ID = Menu.FIRST + 1;
+	private static final String all = "all";
+	private static final String count = "count";
+	private Cursor argCursor = null;
+	
+	private EditText etNoteCount;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +34,9 @@ public class FriendsList extends ListActivity {
         setContentView(R.layout.users_list);
         
         mDbHelper = new NotesDbAdapter(this);
-        mDbHelper.open();        
+        mDbHelper.open();     
+        
+        etNoteCount = (EditText) findViewById(R.id.notes_count);
         
         findViewById(R.id.createUser).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {				
@@ -36,12 +44,29 @@ public class FriendsList extends ListActivity {
 				startActivity(i); 
 			}
 		});
-        getUsersList();
+        
+        findViewById(R.id.notes_filter).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				getUsersList(count); 
+			}
+		});
+        getUsersList(all);
         registerForContextMenu(getListView());
-    }    
+    }
     
-    private void getUsersList() {
-        usersCursor = mDbHelper.fetchAllUsers();
+    
+    private void getUsersList(String filter) {
+        
+    	if (filter == "all"){
+    		argCursor = mDbHelper.fetchAllUsers();
+    	}
+    	else if(filter == "count"){
+    		int mNotesConut = Integer.parseInt(etNoteCount.getText().toString());
+    		argCursor = mDbHelper.fetchUsersWithCount(mNotesConut);
+    		usersCursor.requery();
+    	};
+    	
+    	usersCursor = argCursor;
         startManagingCursor(usersCursor);        
         
         // Create an array to specify the fields we want to display in the list (only USERNAME)
