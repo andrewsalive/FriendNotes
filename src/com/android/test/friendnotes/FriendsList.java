@@ -24,9 +24,11 @@ public class FriendsList extends ListActivity {
 	private static final int DELETE_ID = Menu.FIRST + 1;
 	private static final String all = "all";
 	private static final String count = "count";
+	private static final String birthday = "birthday";
 	private Cursor argCursor = null;
 	
 	private EditText etNoteCount;
+	private EditText etBirthDay;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class FriendsList extends ListActivity {
         mDbHelper.open();     
         
         etNoteCount = (EditText) findViewById(R.id.notes_count);
+        etBirthDay = (EditText) findViewById(R.id.birth_date);
         
         findViewById(R.id.createUser).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {				
@@ -48,6 +51,12 @@ public class FriendsList extends ListActivity {
         findViewById(R.id.notes_filter).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				getUsersList(count); 
+			}
+		});
+        
+        findViewById(R.id.birthday_filter).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				getUsersList(birthday); 
 			}
 		});
         getUsersList(all);
@@ -63,6 +72,11 @@ public class FriendsList extends ListActivity {
     	else if(filter == "count"){
     		int mNotesConut = Integer.parseInt(etNoteCount.getText().toString());
     		argCursor = mDbHelper.fetchUsersWithCount(mNotesConut);
+    		usersCursor.requery();
+    	}
+    	else if(filter == "birthday"){
+    		String mBirthDay = etBirthDay.getText().toString();
+    		argCursor = mDbHelper.fetchUsersWithDate(mBirthDay);
     		usersCursor.requery();
     	};
     	

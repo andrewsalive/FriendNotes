@@ -143,6 +143,16 @@ public class NotesDbAdapter {
         countedUsers = mDb.rawQuery(sqlQuery, null);
         return countedUsers;       
     }
+    
+    public Cursor fetchUsersWithDate(String date) {
+    	Cursor dateUsers;
+    	
+        String columns[] = { "_id", "username", "birthday" };
+        String selection = "birthday = ?";
+        String[] selectionArgs = {date};
+        dateUsers = mDb.query(DATABASE_TABLE_USERS, columns, selection, selectionArgs, null, null, null);
+        return dateUsers;       
+    }
 
     public void close() {
         mDbHelper.close();

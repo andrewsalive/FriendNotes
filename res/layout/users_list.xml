@@ -41,6 +41,25 @@
 		  	    android:layout_height="wrap_content"
 		  	    android:layout_marginRight="8dp"
 		  	    android:text="notes count"/>
+	</LinearLayout>
+	<LinearLayout 
+    	    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" >
+			<EditText
+			    android:id="@+id/birth_date"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="8dp"
+			    android:layout_weight="1"
+			    android:paddingTop="4dp"
+			    android:inputType="date"/>
+		  	<Button
+		  	    android:id="@+id/birthday_filter"
+		  	    android:layout_width="wrap_content"
+		  	    android:layout_height="wrap_content"
+		  	    android:layout_marginRight="8dp"
+		  	    android:text="Date"/>
 	</LinearLayout>    
   	<Button
         android:layout_width="fill_parent"
